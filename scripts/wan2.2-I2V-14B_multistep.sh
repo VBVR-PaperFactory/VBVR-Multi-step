@@ -47,13 +47,10 @@ if [ ! -f "${DATASET_CONFIG_PATH}" ]; then
     exit 1
 fi
 
-# Set proxy for HuggingFace model download
-export http_proxy='http://10.176.253.182:8080'
-export https_proxy='http://10.176.253.182:8080'
-export HTTP_PROXY='http://10.176.253.182:8080'
-export HTTPS_PROXY='http://10.176.253.182:8080'
+# Use locally downloaded model — no network needed
+export DIFFSYNTH_MODEL_BASE_PATH="${REPO_DIR}/models"
+export DIFFSYNTH_SKIP_DOWNLOAD="True"
 export DIFFSYNTH_DOWNLOAD_SOURCE="huggingface"
-# HF_TOKEN must be set in environment before running
 
 echo "=================================="
 echo "VBVR-Multi-step Training"
